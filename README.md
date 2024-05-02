@@ -10,8 +10,7 @@ with visits and employee pass cards with visits from our bank
 
 ### How to install
 
-To connect to your database store the values of env variables in the  `.env` file
-of the `projeckt` directory:
+To connect to your database store the values of env variables in the  `.env` file:
 ```
  ENGINE='your_ENGINE'
  HOST='your_HOST'
@@ -20,6 +19,8 @@ of the `projeckt` directory:
  USER='your_db_user'
  PASSWORD='your_user_password'
  DEBUG=TRUE
+ SECRET_KEY = 'your_SECRET'
+ ALLOWED_HOSTS = ['*']
 ```
 
 Python3 should be already installed. 
