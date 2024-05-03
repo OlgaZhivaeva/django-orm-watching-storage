@@ -1,37 +1,32 @@
 import os
-from dotenv import load_dotenv
 from environs import Env
+import dj_database_url
 
-
-load_dotenv()
-ENGINE = os.getenv('ENGINE')
-HOST = os.getenv('HOST')
-PORT = os.getenv('PORT')
-NAME = os.getenv('NAME')
-USER = os.getenv('USER')
-PASSWORD = os.getenv('PASSWORD')
-
-DATABASES = {
-    'default': {
-        'ENGINE': ENGINE,
-        'HOST': HOST,
-        'PORT': PORT,
-        'NAME': NAME,
-        'USER': USER,
-        'PASSWORD': PASSWORD,
-    }
-}
-
-INSTALLED_APPS = ['datacenter']
-
-SECRET_KEY = os.getenv('SECRET_KEY')
-
-DEBUG = os.getenv('DEBUG')
-
-ROOT_URLCONF = 'project.urls'
 
 env = Env()
 env.read_env()
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': env('DB_ENGINE'),
+    }
+}
+DATABASES['default'] = dj_database_url.config(
+    default='postgres://USER:PASSWORD@HOST:PORT/NAME',
+    conn_max_age=600,
+    conn_health_checks=True,
+)
+
+
+INSTALLED_APPS = ['datacenter']
+
+SECRET_KEY = env('SECRET_KEY')
+
+DEBUG = env('DEBUG')
+
+ROOT_URLCONF = 'project.urls'
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 

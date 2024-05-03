@@ -12,12 +12,8 @@ with visits and employee pass cards with visits from our bank
 
 To connect to your database store the values of env variables in the  `.env` file:
 ```
- ENGINE='your_ENGINE'
- HOST='your_HOST'
- PORT='your_PORT'
- NAME='your_db_name'
- USER='your_db_user'
- PASSWORD='your_user_password'
+ DB_ENGINE='your_DB_ENGINE'
+ DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME
  DEBUG=TRUE
  SECRET_KEY = 'your_SECRET'
  ALLOWED_HOSTS = ['*']
